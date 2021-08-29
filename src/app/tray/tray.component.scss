@@ -1,0 +1,19 @@
+@import "src/styles";
+:host {
+  overflow: hidden;
+}
+
+.header {
+  background-color: $accent-light;
+  width: 100%;
+  margin: 0 0 20px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+}
+
+.color-picker-box {
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
