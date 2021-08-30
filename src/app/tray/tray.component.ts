@@ -1,5 +1,7 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RGB } from '../core/DTO';
+import { ColorConverterService } from '../core/services';
 
 
 @Component({
@@ -9,12 +11,47 @@ import { Router } from '@angular/router';
 })
 export class TrayComponent implements OnInit  {
 
-  public size = 2;
+  public setColorValue: RGB = null;
+  public favColors: Array<RGB> = [];
 
-  constructor(private router: Router) { }
+  constructor(private colorConvert: ColorConverterService) { }
 
   public ngOnInit(): void {
-    this.size = window.screen.width;
+    // Test data
+    this.favColors = [
+      {
+        r: 82,
+        g: 255,
+        b: 136
+      },
+      {
+        r: 48,
+        g: 95,
+        b: 114
+      },
+      {
+        r: 255,
+        g: 41,
+        b: 53
+      },
+      {
+        r: 41,
+        g: 128,
+        b: 185
+      },
+      {
+        r: 255,
+        g: 255,
+        b: 255
+      }];
+  }
+
+  public convertRGBToHex(color: RGB): string {
+    return this.colorConvert.rgbToHex(color.r, color.g, color.b);
+  }
+
+  public onFavColorClicked(color: RGB): void {
+    this.setColorValue = color;
   }
 
   public onColorChange(color: any): void {

@@ -1,7 +1,28 @@
-<h3 class="header">
+<h3 class="heading header">
   Tray Control RGB
 </h3>
-<div class="color-picker-box">
-  <app-color-picker (onColorChange$)="onColorChange($event)"></app-color-picker>
+<div class="tray-content">
+  <div class="color-picker-box">
+    <app-color-picker [color]="setColorValue" (onColorChange$)="onColorChange($event)"></app-color-picker>
+  </div>
+
+  <h5 class="heading fav-colors-heading">
+    Favorites
+  </h5>
+  <div class="fav-colors">
+    <div class="color-element"
+         *ngFor="let favColor of favColors"
+         [style]="{'background-color': convertRGBToHex(favColor)}"
+         (click)="onFavColorClicked(favColor)"
+    >
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="settings-button">
+      <span class="icon"></span><span class="text">Settings</span>
+    </div>
+  </div>
 </div>
 
+<div class="background"></div>

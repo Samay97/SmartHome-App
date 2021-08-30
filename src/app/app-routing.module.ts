@@ -8,7 +8,7 @@ import { TrayRoutingModule } from './tray/tray-routing.module';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'traywindow',
     pathMatch: 'full'
   },
   {

@@ -1,15 +1,24 @@
+// Colors
 $font-color: white;
 $base-color: #051821;
 $accent-dark: #1A4645;
 $accent-light: #266867;
 $warning-dark: #F58800;
 $warning-light: #F8BC24;
+$test: #2D315E;
+
+// Shadow
+$default-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 
 @font-face {
   font-family: 'OpenSansRegular';
   src: url('./assets/font/OpenSans-Regular.ttf') format("truetype");
 }
-$font-main: 'OpenSansRegular', Arial, Helvetica, sans-serif;
+@font-face {
+  font-family: 'Leixo';
+  src: url('./assets/font/LEIXO.ttf') format("truetype");
+}
+$font-main: 'Leixo', 'OpenSansRegular', Arial, Helvetica, sans-serif;
 
 html, body {
   margin: 0;
@@ -18,7 +27,7 @@ html, body {
   height: 100%;
   font-family: $font-main;
 
-  background-color: $base-color;
+  background-color: $test;
   color: $font-color;
   overflow-x: hidden;
 }
@@ -26,7 +35,6 @@ html, body {
 * {
   box-sizing: border-box;
 }
-
 /* Color Picker */
 
 :root, [data-theme="default"]{

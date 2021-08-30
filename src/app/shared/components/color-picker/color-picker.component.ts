@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-import { ColorPicker, Colors, HSI, HSV, RGB, RGBW } from '../../../core/DTO';
+import { Colors, HSI, HSV, RGB, RGBW } from '../../../core/DTO';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 declare let ColorPickerControl: any;
@@ -15,9 +15,14 @@ declare let ColorPickerControl: any;
 export class ColorPickerComponent implements OnInit, AfterViewInit {
 
   @ViewChild('colorContainer')public colorPickerContainer: ElementRef;
+  @Input()set color(color: RGB) {
+    if (color !== null) {
+      this.setColor(color);
+    }
+  }
   @Output() public onColorChange$: EventEmitter<Colors> = new EventEmitter<Colors>();
 
-  private control: ColorPicker;
+  private control: any;
   private onColorChange: Subject<HSV> = new Subject<HSV>();
   private colorChangeEvent: Observable<Colors>;
 
@@ -36,8 +41,13 @@ export class ColorPickerComponent implements OnInit, AfterViewInit {
       container: this.colorPickerContainer.nativeElement,
       theme: 'dark',
       use_alpha: false
-    }) as ColorPicker;
+    });
     this.control.on('change', (color: HSV) => this.onColorChange.next(color));
+  }
+
+  private setColor(color: RGB, withEvent: boolean = true): void {
+    this.control.color.fromRGBa(color.r, color.g, color.b);
+    this.control.update(withEvent);
   }
 
   // eslint-disable-next-line @typescript-eslint/naming-convention

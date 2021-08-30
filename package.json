@@ -1,24 +1,22 @@
 {
-  "name": "angular-electron",
-  "version": "10.1.0",
-  "description": "Angular 12 with Electron (Typescript + SASS + Hot Reload)",
-  "homepage": "https://github.com/maximegris/angular-electron",
+  "name": "smarthome-electronapp",
+  "version": "1.0.0",
+  "description": "App to Control the smart home",
+  "homepage": "",
   "author": {
-    "name": "Maxime GRIS",
-    "email": "maxime.gris@gmail.com"
+    "name": "Samuel Knoch",
+    "email": "samuel@korntal.eu"
   },
   "keywords": [
     "angular",
-    "angular 12",
     "electron",
     "nodejs",
     "typescript",
-    "spectron",
-    "eslint",
     "sass",
     "windows",
     "mac",
-    "linux"
+    "linux",
+    "smarthome"
   ],
   "main": "app/main.js",
   "private": true,
