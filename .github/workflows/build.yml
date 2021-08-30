@@ -1,38 +1,30 @@
-name: Build
+name: build
+
 on:
   push:
     branches:
-      - master
-      - devlop
-
+      - 'master'
+      - 'develop'
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
-
     steps:
-      - uses: actions/checkout@v1
-      
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Node $
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node 16.x
         uses: actions/setup-node@v1
         with:
-          node-version: $
-
-      - name: npm install
+          node-version: '16.x'
+      - name: Install dependencies
         run: |
-          npm ci
+          npm install
           ( cd ./app && npm install )
-      
-      - name: npm build
-        run: |
-          npm run electron:build
+      - name: Build
+        run: npm run electron:build
+      - name: Archive build
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: release
+          path: release
