@@ -81,12 +81,13 @@
 .footer {
   position: absolute!important;
   bottom: 10px;
-  height: 50px;
+  height: 33px;
   padding-left: 35.6px;
   padding-right: 35.6px;
   display: flex;
   flex-direction: row-reverse;
   width: 100%;
+  justify-content: space-between;
 }
 
 .settings-button {
@@ -95,9 +96,8 @@
   background-color: white;
   border-radius: 5px;
   color: $accent-dark;
-  font-size: 22px;
-  padding: 10px;
-  width: 165px;
+  padding: 5px;
+  width: 126px;
   cursor: pointer;
   transition: .25s ease-in-out;
 
@@ -106,16 +106,9 @@
     align-self: center;
     width: 1em;
     height: 1em;
-    background-image: url('../../assets/icons/settings_black_24dp.svg');
+    background-image: url('../../assets/icons/settings_black_18dp.svg');
     padding-right: 10px;
-  }
 
-  .icon svg {
-    width: 1em;
-    height: 1em;
-  }
-
-  .icon.svg-baseline svg {
     top: .125em;
     position: relative;
   }
