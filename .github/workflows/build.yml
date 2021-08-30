@@ -1,0 +1,38 @@
+name: Build
+on:
+  push:
+    branches:
+      - master
+      - devlop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v1
+      
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Node $
+        uses: actions/setup-node@v1
+        with:
+          node-version: $
+
+      - name: npm install
+        run: |
+          npm ci
+          ( cd ./app && npm install )
+      
+      - name: npm build
+        run: |
+          npm run electron:build
