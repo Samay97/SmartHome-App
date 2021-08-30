@@ -57,8 +57,9 @@ function handleOnTrayOpenMainWindowClicked() {
 }
 
 function initTray() {
-  mainTray = new Tray(path.join('C:\\Users\\samuel.knoch\\Downloads', 'diagramm_intel_tonemapper_benchmark.jpg'));
+  mainTray = new Tray(path.join(__dirname, '../src/assets/background.jpg'));
   trayWindow = createTrayWindow();
+  console.log('test');
 
   const _handleOnTrayQuitClicked = handleOnTrayQuitClicked;
   const _handleOnTrayOpenMainWindowClicked = handleOnTrayOpenMainWindowClicked;
